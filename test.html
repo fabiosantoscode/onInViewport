@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<body>
+
+<p>...</p>
+<p>...</p>
+<p>...</p>
+<p>...</p>
+<p>...</p>
+<p>...</p>
+<p>...</p>
+<p>...</p>
+<p>...</p>
+<p>...</p>
+<p>...</p>
+<p>...</p>
+<p>...</p>
+<p>...</p>
+<p>...</p>
+<p>...</p>
+<p>...</p>
+<p>...</p>
+<p>...</p>
+<p>...</p>
+<p>...</p>
+<p>...</p>
+<p>...</p>
+<p>...</p>
+<p>...</p>
+
+<p id=fim>...</p>
+
+<script src="onInViewport.js"></script>
+<script>
+onInViewport(fim, function () {
+    setTimeout(function () {
+        fim.innerHTML = 'This is the end of the page!'
+    }, 1000)
+})
+</script>
