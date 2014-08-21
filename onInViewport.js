@@ -30,7 +30,7 @@
         lastCall = +new Date
 
         for (var i = 0; i < listeners.length; i++)
-            if (onInViewport.isIn(listeners[i].elm)) {
+            if (isIn(listeners[i].elm)) {
                 listeners[i].cb()
                 listeners.splice(i, 1)
             }
@@ -41,7 +41,7 @@
         }
     }
 
-    onInViewport.isIn = function isIn(elm) {
+    function isIn(elm) {
         elm = elm.getBoundingClientRect()
 
         return elm.right  > 0
@@ -62,6 +62,8 @@
         }
     }
 
+    onInViewport.onScroll = onScroll;
+    onInViewport.isIn = isIn;
     return onInViewport
 }))
 
