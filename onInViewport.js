@@ -30,7 +30,7 @@
         lastCall = +new Date
 
         for (var i = 0; i < listeners.length; i++)
-            if (isIn(listeners[i].elm)) {
+            if (onInViewport.isIn(listeners[i].elm)) {
                 listeners[i].cb()
                 listeners.splice(i, 1)
             }
