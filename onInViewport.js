@@ -1,69 +1,69 @@
-(function (factory) {
+;(function (factory) {
     if (typeof define == 'function' && define.amd) {
-        define(factory)
+        define(factory);
     } else if (typeof module == 'object' && module.exports) {
-        module.exports = factory()
+        module.exports = factory();
     } else {
-        window.onInViewport = factory()
+        window.onInViewport = factory();
     }
 }(function () {
-    'use strict'
-    var html = document.documentElement
+    'use strict';
+    var html = document.documentElement;
 
     var onEvent = window.addEventListener ||
-        function (ev, func) { this.attachEvent('on' + ev, func) }
+        function (ev, func) { this.attachEvent('on' + ev, func); };
 
     var offEvent = window.removeEventListener ||
-        function (ev, func) { this.detachEvent('on' + ev, func) }
+        function (ev, func) { this.detachEvent('on' + ev, func); };
 
-    var listeners = []
+    var listeners = [];
 
-    var lastCall = 0
-    var timeout
+    var lastCall = 0;
+    var timeout;
 
     function onScroll() {
-        var timeSince = +new Date - lastCall
-        if (timeSince < 500 && !timeout)
-            return timeout = setTimeout(onScroll, 500 - timeSince)
+        var timeSince = Date.now() - lastCall;
+        if (timeSince < 500 && !timeout) /* jshint boss: true */
+            return timeout = setTimeout(onScroll, 500 - timeSince);
 
-        timeout = 0
-        lastCall = +new Date
+        timeout = 0;
+        lastCall = Date.now();
 
         for (var i = 0; i < listeners.length; i++)
             if (onInViewport.isIn(listeners[i].elm)) {
-                listeners[i].cb()
-                listeners.splice(i, 1)
+                listeners[i].cb();
+                listeners.splice(i, 1);
             }
 
         if (!listeners.length) {
-            offEvent.call(window, 'scroll', onScroll)
-            offEvent.call(window, 'resize', onScroll)
+            offEvent.call(window, 'scroll', onScroll);
+            offEvent.call(window, 'resize', onScroll);
         }
     }
 
     function isIn(elm) {
-        elm = elm.getBoundingClientRect()
+        elm = elm.getBoundingClientRect();
 
-        return elm.right  > 0
-            && elm.bottom > 0
-            && elm.top    < html.clientHeight
-            && elm.left   < html.clientWidth
+        return elm.right  > 0 &&
+               elm.bottom > 0 &&
+               elm.top    < html.clientHeight &&
+               elm.left   < html.clientWidth;
     }
 
     function onInViewport(elm, cb) {
         if (onInViewport.isIn(elm))
-            return cb()
+            return cb();
 
-        listeners.push({ elm: elm, cb: cb })
+        listeners.push({ elm: elm, cb: cb });
 
         if (listeners.length === 1) {
-            onEvent.call(window, 'scroll', onScroll)
-            onEvent.call(window, 'resize', onScroll)
+            onEvent.call(window, 'scroll', onScroll);
+            onEvent.call(window, 'resize', onScroll);
         }
     }
 
     onInViewport.onScroll = onScroll;
     onInViewport.isIn = isIn;
-    return onInViewport
-}))
+    return onInViewport;
+}));
 
