@@ -1,0 +1,23 @@
+{
+  "name": "onInViewport",
+  "version": "0.0.0",
+  "homepage": "https://github.com/fabiosantoscode/onInViewport",
+  "authors": [
+    "Fábio Santos <fabiosantosart@gmail.com>"
+  ],
+  "description": "onInViewport(elm, doStuff)",
+  "main": "onInViewport.js",
+  "moduleType": [
+    "amd",
+    "globals",
+    "node"
+  ],
+  "keywords": [
+    "onInViewport",
+    "lazy-loading"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+  ]
+}
