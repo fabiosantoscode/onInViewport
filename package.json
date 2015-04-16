@@ -1,0 +1,19 @@
+{
+  "name": "dom-oninviewport",
+  "version": "1.0.0",
+  "description": "require('dom-oninviewport')(elm, callback)",
+  "main": "onInViewport.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fabiosantoscode/onInViewport.git"
+  },
+  "author": "Fábio Santos <fabiosantosart@gmail.com>",
+  "license": "WTFPL",
+  "bugs": {
+    "url": "https://github.com/fabiosantoscode/onInViewport/issues"
+  },
+  "homepage": "https://github.com/fabiosantoscode/onInViewport"
+}
